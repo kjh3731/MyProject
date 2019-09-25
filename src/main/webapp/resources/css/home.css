@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+html, body, h3, h1 {margin: 0; padding: 0;}
+
+.container {width: 90%; margin: 0 auto; padding: 50px 0;}
+
+table {width: 100%; border-collapse: collapse;}
+
+.border {border: 1px solid #CCCCCC;}
+
+tr {border-bottom: 1px solid #CCCCCC;}
+
+.mainBg, nav {background-image: linear-gradient(to right, #70e1f5, #ffd194);}
+nav a:hover {background-color: black;}
+.mainSize {width: 100%; height: 38vh;}
+
+.display-middle {
+	text-align: center;
+	/* background-color:rgba(60, 60, 60, 0.6); */
+	position: absolute;
+	/* width: 50%; 
+		height: 50%; */
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.display-in, .dateBox, .headText h3 {display: inline-block;}
+
+.topNotice {padding: 10px 0;}
+.noticeImg {background-color: #FFC645; border-radius: 100px;}
+
+.dateNav {width: 100%;}
+.dateBox {text-align: center; width: calc(100% / 7);}
+.dateBox:hover {background-color: #063B7E; border-radius: 10px; cursor: pointer;}
+
+.story {display: inline-flex;}
+.storySize {width: 33.3333%; display: inline-grid;}
+.storyImg {width: 100%; height: auto;}
+.storyText {border: 1px solid #CCCCCC;}
+
+.headText {margin: 20px 0;}
+.headText button {padding: 10px 20px; background-color: #70e1f5; border: none;}
+
+.float-r {float: right;}
+
+footer {background-color: black;}
