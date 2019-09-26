@@ -1,3 +1,5 @@
+<%@page import="kr.gudi.web.bean.HomeBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -89,16 +91,21 @@
 			</thead>
 			<tbody>
 <%
-
+	List<HomeBean> list = (List<HomeBean>)request.getAttribute("list");
+	if(list == null) {
+		System.out.println("list가 없습니다");
+	} else {
+		for(int i = 0; i < list.size(); i++){
 %>			
 				<tr>
 					<td>1</td>
-					<td>여의도 한강공원</td>
-					<td>모임장밍꾸</td>
-					<td>2019.09.23</td>
+					<td><%=list.get(i).getmTitle() %></td>
+					<td><%=list.get(i).getmUser() %></td>
+					<td><%=list.get(i).getmDate() %></td>
 				</tr>
 <%
-
+		}
+	}
 %>				
 			</tbody>
 		</table>

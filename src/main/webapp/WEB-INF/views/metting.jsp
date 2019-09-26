@@ -1,3 +1,5 @@
+<%@page import="kr.gudi.web.bean.HomeBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,16 +11,20 @@
 		.bgImg {
 		background-image: url("/resources/img/bike.jpg"); height: 150px;
 		background-position: center;
+		/* background-attachment: fixed; */
+    	background-repeat: no-repeat;
+    	background-size: cover
 		}
+		
 	</style>
 </head>
 <body>
 	<nav>
-		<a>Home</a>
+		<a href="/">Home</a>
 		<a>공지사항</a>
 		<a>문의</a>
 		<a href="/metting">모임</a>
-		<a class="float-r">로그인</a>
+		<a href="/login" class="float-r">로그인</a>
 	</nav>
 	<header>
 		<div class="bgImg">
@@ -37,7 +43,7 @@
 		
 		<div class="headText">
 			<form>
-				<input type="text">
+				<input type="text" placeholder="검색" formaction="/metting/search">
 			</form>	
 			<a href="/metting/write"><button class="float-r">글쓰기</button></a>
 		</div>
@@ -52,16 +58,21 @@
 			</thead>
 			<tbody>
 <%
-
+	List<HomeBean> list = (List<HomeBean>)request.getAttribute("list");
+	if(list == null) {
+		System.out.println("list가 없습니다");
+	} else {
+		for(int i = 0; i < list.size(); i++){
 %>			
 				<tr>
 					<td>1</td>
-					<td>여의도 한강공원</td>
-					<td>모임장밍꾸</td>
-					<td>2019.09.23</td>
+					<td><%=list.get(i).getmTitle() %></td>
+					<td><%=list.get(i).getmUser() %></td>
+					<td><%=list.get(i).getmDate() %></td>
 				</tr>
 <%
-
+		}
+	}
 %>				
 			</tbody>
 		</table>
