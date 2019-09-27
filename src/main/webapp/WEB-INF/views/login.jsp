@@ -21,16 +21,21 @@
 			position: absolute;
 			top: 50%;
 			left: 65%;
-			transform: translate(-50%, -50%);
-			background-color: silver;
+			transform: translate(-50%, -70%);
 			width: 30%;
-			height: 300px;	
+			height: 300px;
+			border: 1px solid #CCCCCC;	
 		}
 		
-		input {width: 100%; box-sizing: border-box; padding: 10px 0;}	
+		.login input {background-color: #063B7E; border-radius: 5px; border: none; padding: 10px;}
+		input {
+			width: 100%; 
+			box-sizing: border-box;
+			padding: 10px 0;
+			}	
 		.border-t {border-top: 1px solid #CCCCCC;}
 		
-		img {width: 100%;}	
+		img {}	
 	</style>
 </head>
 <body>
@@ -48,11 +53,14 @@
 				<input type="text" id="loginId">
 				<label for="loginPw">비밀번호</label>
 				<input type="text" id="loginPw">
-				
-				<input type="submit" value="로그인">
-				
+				<div class="login">
+					<input type="submit" value="로그인">
+				</div>
 				<div class="border-t">
-					<img src="/resources/img/kakao_login.png">
+					<a href="/login/kakao">
+						<img src="/resources/img/kakao_btn.png">
+						카카오 로그인
+					</a>
 				</div>
 			</form>
 			<div>

@@ -1,7 +1,6 @@
 <%@page import="kr.gudi.web.bean.HomeBean"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,18 +12,31 @@
 	<script>
 		$(document).ready(function(){
 			calendar();
+			
+		/* 	$(".dateNav").on("click", function(){
+				$.ajax({
+					url:'/',
+					success:function(data){
+						$(".container").empty();
+						$(".container").append(data);
+					}
+				})
+				
+			}) */
 		});
+		
 	</script>
 </head>
 <body>
-	<nav>
-		<a>Home</a>
-		<a>공지사항</a>
-		<a>문의</a>
-		<a href="/metting">모임</a>
-		<a class="float-r">로그인</a>
-	</nav>
 	<header>
+		<nav>
+			<a>Home</a>
+			<a>공지사항</a>
+			<a>문의</a>
+			<a href="/story">스토리</a>
+			<a href="/metting">모임</a>
+			<a href="/login" class="float-r">로그인</a>
+		</nav>
 		<div class="mainBg mainSize">
 			<div class="display-middle">
 				<h3>자전거 타요</h3>
@@ -47,31 +59,37 @@
 	<div class="container">
 		<div class="headText">
 			<h3>가이드(매니저)와 함께 하는 스토리 여행</h3>
-			<a><button class="float-r">>더보기</button></a>
+			<a href="/story"><button class="float-r">>더보기</button></a>
 		</div>
 		<div class="story">
 			<!-- 반복구간 -->
-			<div class="storySize">
-				<img src="/resources/img/test.png" class="storyImg">
-				<div class="storyText">
-					<p>제목</p>
-					<p>내용or가이드이름</p>
+			<div class="padding-r storyBox">
+				<div class="storySize">
+					<img src="/resources/img/test.png" class="storyImg">
+					<div class="storyText">
+						<p>제목</p>
+						<p>내용or가이드이름</p>
+					</div>
 				</div>
 			</div>
 			<!-- 반복구간 -->
-			<div class="storySize" style="padding: 0 30px">
-				<img src="/resources/img/test.png" class="storyImg">
-				<div class="storyText">
-					<p>제목</p>
-					<p>내용or가이드이름</p>
+			<div class="padding-r storyBox">
+				<div class="storySize">
+					<img src="/resources/img/test.png" class="storyImg">
+					<div class="storyText">
+						<p>제목</p>
+						<p>내용or가이드이름</p>
+					</div>
 				</div>
 			</div>
+			<div class="storyBox">
 			<div class="storySize">
 				<img src="/resources/img/test.png" class="storyImg">
 				<div class="storyText">
 					<p>제목</p>
 					<p>내용or가이드이름</p>
 				</div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -80,7 +98,7 @@
 			<h3>모임 글</h3>
 			<a href="/metting"><button class="float-r">>더보기</button></a>
 		</div>
-		<table>
+		<table class="metting">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -97,7 +115,7 @@
 	} else {
 		for(int i = 0; i < list.size(); i++){
 %>			
-				<tr>
+				<tr class="mainTable">
 					<td>1</td>
 					<td><%=list.get(i).getmTitle() %></td>
 					<td><%=list.get(i).getmUser() %></td>

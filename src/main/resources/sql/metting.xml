@@ -11,4 +11,7 @@
   			and (`mTitle` like '%${mTitle}%')
   		</if>
   	</select>
+  	<insert id="insert" parameterType="kr.gudi.web.bean.HomeBean">
+  		insert into mWrite (mTitle, mContents, mUser) values (#{mTitle}, #{mContents}, #{mUser})
+  	</insert>
 </mapper>

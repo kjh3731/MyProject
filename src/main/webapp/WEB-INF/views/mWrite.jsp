@@ -26,7 +26,7 @@
 	</style>
 </head>
 <body>
-	<form>
+	<form action="/metting/write/insert" method="post">
 		<nav>
 			<h3>타요</h3>
 			<button type="submit" class="float-r">저장</button>

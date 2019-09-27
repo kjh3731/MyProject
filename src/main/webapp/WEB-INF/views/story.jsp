@@ -1,11 +1,9 @@
-<%@page import="kr.gudi.web.bean.HomeBean"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>모임 글</title>
+	<title>스토리 여행</title>
 	<link rel="stylesheet" href="/resources/css/home.css">
 	<style>
 		.bgImg {
@@ -30,8 +28,8 @@
 	<header>
 		<div class="bgImg">
 			<div>
-				<h3>모임 글</h3>
-				<p>안녕하세요</p>
+				<h3>가이드와 함께 하는 스토리 여행</h3>
+				<p>========</p>
 			</div>
 		</div>
 		<div class="topNotice">
@@ -46,7 +44,7 @@
 			<form>
 				<input type="text" placeholder="검색" formaction="/metting/search">
 			</form>	
-			<a href="/metting/write"><button class="float-r">글쓰기</button></a>
+			<a href=""><button class="float-r">글쓰기</button></a>
 		</div>
 		<table>
 			<thead>
@@ -59,21 +57,16 @@
 			</thead>
 			<tbody>
 <%
-	List<HomeBean> list = (List<HomeBean>)request.getAttribute("list");
-	if(list == null) {
-		System.out.println("list가 없습니다");
-	} else {
-		for(int i = 0; i < list.size(); i++){
+	
 %>			
 				<tr>
-					<td><%=list.get(i).getmNo() %></td>
-					<td><%=list.get(i).getmTitle() %></td>
-					<td><%=list.get(i).getmUser() %></td>
-					<td><%=list.get(i).getmDate() %></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
 				</tr>
 <%
-		}
-	}
+	
 %>				
 			</tbody>
 		</table>
