@@ -13,18 +13,53 @@
 		$(document).ready(function(){
 			calendar();
 			
-		/* 	$(".dateNav").on("click", function(){
-				$.ajax({
-					url:'/',
-					success:function(data){
-						$(".container").empty();
-						$(".container").append(data);
-					}
-				})
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			console.log(year, month, day);
+			select(year, month, day);
+			
+			$('.dateBox').on('click', function(e) {
+				var thisClick = $(this).children('.day');
+				var thisYear = thisClick.attr('data-year');
+				var thisMonth = thisClick.attr('data-month');
+				var thisDay = thisClick.text();
 				
-			}) */
+				console.log(thisYear, thisMonth, thisDay);
+				select(thisYear, thisMonth, thisDay);
+			});
 		});
 		
+		function select(year, month, day) {
+			var clickDate = { "year": year, "month": month, "day": day };
+			$.ajax({
+				url:"/home",
+				data: clickDate
+			})
+			.done(function(data){
+				data = JSON.parse(data);
+				$(".mTable").empty();
+				
+				var html = "";
+				if(data.result.length == 0) {
+					html += '<tr>';
+					html += '<td colspan="4">모임이 없어요 ~.~</td>';
+					$(".mTable").append(html);
+					$(".mTable td").css('text-align', 'center');
+				} else {
+					for(var i = 0; i < data.result.length; i++) {
+						html += '<tr>';
+						html += '<td>' + data.result[i].mNo + '</td>'
+						html += '<td><a>' + data.result[i].mTitle + '</a></td>';
+						html += '<td>' + data.result[i].mUser + '</td>';
+						html += '<td>' + data.result[i].mDate + '</td>';
+						html += '</tr>';
+					}
+					$(".mTable").append(html);
+				}
+			});
+		}
 	</script>
 </head>
 <body>
@@ -107,24 +142,15 @@
 					<th>작성날짜</th>
 				</tr>
 			</thead>
-			<tbody>
-<%
-	List<HomeBean> list = (List<HomeBean>)request.getAttribute("list");
-	if(list == null) {
-		System.out.println("list가 없습니다");
-	} else {
-		for(int i = 0; i < list.size(); i++){
-%>			
-				<tr class="mainTable">
-					<td>1</td>
-					<td><%=list.get(i).getmTitle() %></td>
-					<td><%=list.get(i).getmUser() %></td>
-					<td><%=list.get(i).getmDate() %></td>
+			<tbody class="mTable">
+			<!-- ajax
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
 				</tr>
-<%
-		}
-	}
-%>				
+			-->	
 			</tbody>
 		</table>
 	</div>

@@ -21,12 +21,12 @@
 			position: absolute;
 			top: 50%;
 			left: 65%;
-			transform: translate(-50%, -70%);
+			transform: translate(-50%, -60%);
 			width: 30%;
-			height: 300px;
-			border: 1px solid #CCCCCC;	
+			/* border: 1px solid #CCCCCC; */	
 		}
 		
+		.login, .border-t {padding: 20px 0;}
 		.login input {background-color: #063B7E; border-radius: 5px; border: none; padding: 10px;}
 		input {
 			width: 100%; 
@@ -34,25 +34,35 @@
 			padding: 10px 0;
 			}	
 		.border-t {border-top: 1px solid #CCCCCC;}
+		.label {padding: 10px 0;}
+		.a {margin-left: 30%; height: 100vh;}
 		
-		img {}	
+		.container {width: 80%; margin: 0 auto; padding: 10% 0;}
+		
+		.inputWrap {margin: 5px 0;}
+		.loginFind {padding-top: 10px;}
 	</style>
 </head>
 <body>
 	<div class="loginBgImgSize">
 		<div class="loginBgImg"></div>
 	</div>
-	<div>
+	<div class="a">
 		<div class="loginBox">
-			<div>
+		<div class="container">
+			<div class="headMsg">
 				<h3>자전거 함께 타고 싶을 땐</h3>
 				<h3>타요</h3>
 			</div>
 			<form>
-				<label for="loginId">아이디 또는 이메일</label>
-				<input type="text" id="loginId">
-				<label for="loginPw">비밀번호</label>
-				<input type="text" id="loginPw">
+				<div class="inputWrap">
+					<p>아이디 또는 이메일</p>
+					<input type="text">
+				</div>
+				<div class="inputWrap">
+					<p>비밀번호</p>
+					<input type="text">
+				</div>
 				<div class="login">
 					<input type="submit" value="로그인">
 				</div>
@@ -63,9 +73,10 @@
 					</a>
 				</div>
 			</form>
-			<div>
+			<div class="loginFind">
 				<span><a>비밀번호가 생각나지 않나요?</a></span>
 				<span><a>아이디가 없다면 여기에서 가입하세요</a></span>
+			</div>
 			</div>
 		</div>
 	</div>

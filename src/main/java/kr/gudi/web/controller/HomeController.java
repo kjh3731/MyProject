@@ -25,16 +25,26 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		List<HomeBean> list = sql.selectList("home.select");
-		model.addAttribute("list", list);
+//		List<HomeBean> list = sql.selectList("home.select");
+//		model.addAttribute("list", list);
 		return "home";
 	}
 	
 	@RequestMapping("/home")
-	public void ajaxHome(HomeBean hb) {
-		HashMap<String, Object> result = new HashMap<String, Object>();
-		result.put("result", sql.selectList("home.select", hb));
-		
+	public void ajaxHome(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			HashMap<String, Object> result = new HashMap<String, Object>();
+			HashMap<String, Object> bufferMap = new HashMap<String, Object>();
+			
+			bufferMap.put("year", req.getParameter("year"));
+			bufferMap.put("month", req.getParameter("month"));
+			bufferMap.put("day", req.getParameter("day"));
+			System.out.println(sql.selectList("home.date-select", bufferMap).toString());
+			result.put("result", sql.selectList("home.date-select", bufferMap));
+			res.getWriter().write(JSONObject.fromObject(result).toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@RequestMapping("/dateNav2")

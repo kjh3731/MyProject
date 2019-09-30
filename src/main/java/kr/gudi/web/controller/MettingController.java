@@ -2,6 +2,8 @@ package kr.gudi.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,9 +22,9 @@ public class MettingController {
 	SqlSession sql;
 	
 	@RequestMapping("/metting")
-	public String metting(Model model) {
-		List<HomeBean> list = sql.selectList("metting.select");
-		model.addAttribute("list", list);
+	public String metting(Model model, HomeBean hb) {
+		
+		model.addAttribute("list", sql.selectList("metting.select", hb));
 		return "metting";
 	}
 	

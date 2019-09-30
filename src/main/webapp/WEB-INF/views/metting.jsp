@@ -13,9 +13,14 @@
 		background-position: center;
 		/* background-attachment: fixed; */
     	background-repeat: no-repeat;
-    	background-size: cover
+    	background-size: cover;
+    	margin-top: 51px;
 		}
 		
+		input {padding: 9.5px 5px;}
+		
+		.headText {width: 100%;}
+		.search {display: inline-block;}
 	</style>
 </head>
 <body>
@@ -41,12 +46,15 @@
 		<div class="dateNav"></div>
 	</header>
 	<div class="container">
-		
 		<div class="headText">
-			<form>
-				<input type="text" placeholder="검색" formaction="/metting/search">
-			</form>	
-			<a href="/metting/write"><button class="float-r">글쓰기</button></a>
+			<div class="search">
+				<form action="/metting">
+					<input type="text" placeholder="제목으로 검색" formaction="/metting" name="mTitle">
+				</form>
+			</div>	
+			<div class="float-r">
+				<a href="/metting/write"><button>글쓰기</button></a>
+			</div>
 		</div>
 		<table>
 			<thead>
