@@ -51,7 +51,7 @@
 				</form>
 			</div>
 			<div>	
-				<a href=""><button class="float-r">글쓰기</button></a>
+				<a href="/story/write"><button class="float-r">글쓰기</button></a>
 			</div>
 		</div>
 		<table>

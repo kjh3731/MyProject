@@ -5,11 +5,32 @@
 	<meta charset="UTF-8">
 	<title>글쓰기</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdn.ckeditor.com/4.12.1/full/ckeditor.js"></script>
-	<script src="/resources/js/ckEditor.js"></script>
+	<script src="/resources/libs/ckeditor/ckeditor.js"></script>
 	<script>
 		$(document).ready(function(){
-			ckEditor();
+			start();
+			function start() {
+				CKEDITOR.on('dialogDefinition', function( ev ){
+	              var dialogName = ev.data.name;
+	              var dialogDefinition = ev.data.definition;
+
+	              switch (dialogName) {
+	                  case 'image': //Image Properties dialog
+	                  //dialogDefinition.removeContents('info');
+	                  dialogDefinition.removeContents('Link');
+	                  dialogDefinition.removeContents('advanced');
+	                  break;
+	              }
+	          });
+			
+	         CKEDITOR.replace( 'editor', {
+	             resize_enabled: false,
+	             height: 500,
+	             uiColor: '#FFFFFF'
+	          });
+			}
+			
+			
 		});
 	</script>
 	<style>
@@ -36,9 +57,9 @@
 				<input type="text" name="mTitle" placeholder="제목">
 			</div>		
 			<textarea id="editor" name="mContents"></textarea>
-			<div class="padding">
+			<!-- <div class="padding">
 				<input type="file">
-			</div>
+			</div> -->
 		</div>
 	</form>	
 </body>

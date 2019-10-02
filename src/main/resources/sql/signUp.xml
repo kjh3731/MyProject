@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="signUp">
+	<select id="select" parameterType="kr.gudi.web.bean.SignUpBean" resultType="kr.gudi.web.bean.SignUpBean">
+		select sId, sPw 
+		from signUp 
+		where sDelYn = 'N' and sId = #{sId} and sPw = #{sPw}
+	</select>
+	<select id="id" parameterType="kr.gudi.web.bean.SignUpBean" resultType="kr.gudi.web.bean.SignUpBean">
+		select sId
+		from signUp
+		where sDelYn = 'N' and sId = #{sId}
+	</select>
+  	<insert id="insert" parameterType="kr.gudi.web.bean.SignUpBean">
+  		insert into signUp (sId, sPw, sName, sGender, sPhon) values (#{sId}, #{sPw}, #{sName}, #{sGender}, #{sPhon})
+  	</insert>
+</mapper>

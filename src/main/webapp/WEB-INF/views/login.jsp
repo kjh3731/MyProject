@@ -35,7 +35,7 @@
 			}	
 		.border-t {border-top: 1px solid #CCCCCC;}
 		.label {padding: 10px 0;}
-		.a {margin-left: 30%; height: 100vh;}
+		.loginRight {margin-left: 30%; height: 100vh;}
 		
 		.container {width: 80%; margin: 0 auto; padding: 10% 0;}
 		
@@ -47,21 +47,21 @@
 	<div class="loginBgImgSize">
 		<div class="loginBgImg"></div>
 	</div>
-	<div class="a">
+	<div class="loginRight">
 		<div class="loginBox">
 		<div class="container">
 			<div class="headMsg">
 				<h3>자전거 함께 타고 싶을 땐</h3>
 				<h3>타요</h3>
 			</div>
-			<form>
+			<form action="/localLogin">
 				<div class="inputWrap">
 					<p>아이디 또는 이메일</p>
-					<input type="text">
+					<input type="text" name="sId">
 				</div>
 				<div class="inputWrap">
 					<p>비밀번호</p>
-					<input type="text">
+					<input type="text" name="sPw">
 				</div>
 				<div class="login">
 					<input type="submit" value="로그인">
@@ -75,7 +75,7 @@
 			</form>
 			<div class="loginFind">
 				<span><a>비밀번호가 생각나지 않나요?</a></span>
-				<span><a>아이디가 없다면 여기에서 가입하세요</a></span>
+				<span><a href="/signUp">아이디가 없다면 여기에서 가입하세요</a></span>
 			</div>
 			</div>
 		</div>

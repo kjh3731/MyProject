@@ -16,4 +16,8 @@ function ckEditor() {
 			{ name: 'tools', items: [ 'Maximize' ] }
 			]
 	});
+	
+	// Enable local "abbr" plugin from /myplugins/abbr/ folder.
+	CKEDITOR.plugins.addExternal( 'easyimage', '//example.com/ckeditor/plugins/easyimage', 'plugin.js' );
+	
 }

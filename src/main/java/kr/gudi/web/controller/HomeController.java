@@ -2,7 +2,6 @@ package kr.gudi.web.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,10 +10,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.gudi.web.bean.HomeBean;
+import kr.gudi.web.bean.SignUpBean;
 import net.sf.json.JSONObject;
 
 @Controller
@@ -30,6 +30,7 @@ public class HomeController {
 		return "home";
 	}
 	
+	// home화면 ajax
 	@RequestMapping("/home")
 	public void ajaxHome(HttpServletRequest req, HttpServletResponse res) {
 		try {
@@ -39,7 +40,7 @@ public class HomeController {
 			bufferMap.put("year", req.getParameter("year"));
 			bufferMap.put("month", req.getParameter("month"));
 			bufferMap.put("day", req.getParameter("day"));
-			System.out.println(sql.selectList("home.date-select", bufferMap).toString());
+//			System.out.println(sql.selectList("home.date-select", bufferMap).toString());
 			result.put("result", sql.selectList("home.date-select", bufferMap));
 			res.getWriter().write(JSONObject.fromObject(result).toString());
 		} catch (IOException e) {
@@ -69,4 +70,39 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	// 회원가입 화면
+	@RequestMapping("/signUp")
+	public String signUp() {
+		
+		return "signUp";
+	}
+	
+	@PostMapping("/signUp/insert")
+	public String insert(SignUpBean sb) {
+		sql.insert("signUp.insert", sb);
+		System.out.println(sb.toString());
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/localLogin")
+	public String localLogin(SignUpBean sb) {
+		
+		sql.selectOne("signUp.select", sb);
+		System.out.println(sb.toString());
+		return "redirect:/";
+	}
+	
+	// 회원가입 id check ajax
+	@RequestMapping("/signUp/check")
+	public void SignUpCheck(HttpServletResponse res, HttpServletRequest req) {
+		try {
+			HashMap<String, Object> result = new HashMap<String, Object>();
+			// 수정 필요
+			result.put("result", sql.selectList("signUp.id"));
+			res.getWriter().write(JSONObject.fromObject(result).toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
