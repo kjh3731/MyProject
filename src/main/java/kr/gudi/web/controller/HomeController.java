@@ -47,7 +47,7 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
-	
+/*	
 	@RequestMapping("/dateNav2")
 	public String dateNav(HttpServletResponse res, HttpServletRequest req) {
 		return "dateNav";
@@ -70,11 +70,27 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+*/	
 	// 회원가입 화면
 	@RequestMapping("/signUp")
 	public String signUp() {
 		
 		return "signUp";
+	}
+	
+	// 회원가입 id check ajax
+	@RequestMapping("/signUp/check")
+	public void SignUpCheck(HttpServletResponse res, HttpServletRequest req) {
+		try {
+			String id = req.getParameter("id");
+			
+			HashMap<String, Object> result = new HashMap<String, Object>();
+			// 수정 필요
+			result.put("result", sql.selectList("signUp.idCheck", id));
+			res.getWriter().write(JSONObject.fromObject(result).toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@PostMapping("/signUp/insert")
@@ -84,25 +100,23 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/localLogin")
-	public String localLogin(SignUpBean sb) {
+	@PostMapping("/localLogin")
+	public String localLogin() {
 		
-		sql.selectOne("signUp.select", sb);
-		System.out.println(sb.toString());
 		return "redirect:/";
 	}
 	
-	// 회원가입 id check ajax
-	@RequestMapping("/signUp/check")
-	public void SignUpCheck(HttpServletResponse res, HttpServletRequest req) {
-		try {
-			HashMap<String, Object> result = new HashMap<String, Object>();
-			// 수정 필요
-			result.put("result", sql.selectList("signUp.id"));
-			res.getWriter().write(JSONObject.fromObject(result).toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	// 로그인 id, pw check ajax
+	@RequestMapping("/localLogin/check")
+	public void localLoginCheck(HttpServletResponse res, HttpServletRequest req) {
+		String id = req.getParameter("sId");
+		String pw = req.getParameter("sPw");
+		// 수정필요 값 못받아옴 login.jsp
+		System.out.println(id);
+		System.out.println(pw);
+//		sql.selectList("signUp.login", sb);
+//		System.out.println(sb.toString());
+		
+		
 	}
-	
 }

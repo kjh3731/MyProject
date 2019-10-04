@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>타요 로그인</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<style>
 		html, body, h3 {margin: 0; padding: 0;}
 		span {display: block;}
@@ -23,7 +24,6 @@
 			left: 65%;
 			transform: translate(-50%, -60%);
 			width: 30%;
-			/* border: 1px solid #CCCCCC; */	
 		}
 		
 		.login, .border-t {padding: 20px 0;}
@@ -32,6 +32,7 @@
 			width: 100%; 
 			box-sizing: border-box;
 			padding: 10px 0;
+			border: 1px solid #A9A9A9;
 			}	
 		.border-t {border-top: 1px solid #CCCCCC;}
 		.label {padding: 10px 0;}
@@ -40,8 +41,26 @@
 		.container {width: 80%; margin: 0 auto; padding: 10% 0;}
 		
 		.inputWrap {margin: 5px 0;}
+		label {display: block; margin: 5px 0;}
 		.loginFind {padding-top: 10px;}
 	</style>
+	<script>
+		$(document).ready(function(){
+			check();
+		});
+		
+		function check(id, pw){
+			var loginData = {"id" : id, "pw" : pw};
+			$.ajax({
+				url:"/localLogin/check",
+				data: loginData
+			})
+			.done(function(data){
+				data = JSON.parse(data);
+				console.log(data);
+			})
+		}
+	</script>
 </head>
 <body>
 	<div class="loginBgImgSize">
@@ -54,14 +73,14 @@
 				<h3>자전거 함께 타고 싶을 땐</h3>
 				<h3>타요</h3>
 			</div>
-			<form action="/localLogin">
+			<form action="/localLogin" method="post">
 				<div class="inputWrap">
-					<p>아이디 또는 이메일</p>
+					<label>아이디 또는 이메일</label>
 					<input type="text" name="sId">
 				</div>
 				<div class="inputWrap">
-					<p>비밀번호</p>
-					<input type="text" name="sPw">
+					<label>비밀번호</label>
+					<input type="password" name="sPw">
 				</div>
 				<div class="login">
 					<input type="submit" value="로그인">

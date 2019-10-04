@@ -18,7 +18,7 @@
 			var month = date.getMonth() + 1;
 			var day = date.getDate();
 			console.log(year, month, day);
-			select(year, month, day);
+			oneWeek(year, month, day);
 			
 			$('.dateBox').on('click', function(e) {
 				var thisClick = $(this).children('.day');
@@ -27,11 +27,11 @@
 				var thisDay = thisClick.text();
 				
 				console.log(thisYear, thisMonth, thisDay);
-				select(thisYear, thisMonth, thisDay);
+				oneWeek(thisYear, thisMonth, thisDay);
 			});
 		});
 		
-		function select(year, month, day) {
+		function oneWeek(year, month, day) {
 			var clickDate = { "year": year, "month": month, "day": day };
 			$.ajax({
 				url:"/home",
@@ -81,7 +81,6 @@
 		<div class="topNotice">
 			<span class="noticeImg">공지사항</span> <span>공지사항 입니다</span>
 		</div>
-
 		<div class="dateNav">
 			<!-- 자바 스크립트 처리 
 			<div class="dateBox">
