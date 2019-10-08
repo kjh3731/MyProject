@@ -113,7 +113,9 @@ public class KakaoLoginController {
 					resultMap.put("thumbnail_image", thumbnail_image);
 //					System.out.println("resultMap : " + resultMap.toString());
 					
-//					HttpSession session = req.getSession();
+//					HashMap<String, Object> sessionMap = (HashMap<String, Object>) session.getAttribute("resultMap");
+//					System.out.println(sessionMap.toString());
+//					System.out.println(sessionMap.get("id").toString());
 //					session.setAttribute("id", id);
 //					String sessionId = session.getAttribute("id").toString();
 //					System.out.println("sessionId : " + sessionId);
@@ -128,7 +130,6 @@ public class KakaoLoginController {
 //						sql.insert("user.insert", resultMap);
 //					}
 				}
-				
 				input.close();
 			}
 			res.sendRedirect("/");
@@ -137,6 +138,5 @@ public class KakaoLoginController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 }

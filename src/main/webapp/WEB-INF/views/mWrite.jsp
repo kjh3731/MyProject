@@ -8,8 +8,9 @@
 	<script src="/resources/libs/ckeditor/ckeditor.js"></script>
 	<script>
 		$(document).ready(function(){
-			start();
-			function start() {
+			ck();
+		});
+			function ck() {
 				CKEDITOR.on('dialogDefinition', function( ev ){
 	              var dialogName = ev.data.name;
 	              var dialogDefinition = ev.data.definition;
@@ -29,9 +30,6 @@
 	             uiColor: '#FFFFFF'
 	          });
 			}
-			
-			
-		});
 	</script>
 	<style>
 		html, body, h3 {margin: 0; padding: 0;}
@@ -49,7 +47,7 @@
 <body>
 	<form action="/metting/write/insert" method="post">
 		<nav>
-			<h3>타요</h3>
+			<a href="/">타요</a>
 			<button type="submit" class="float-r">저장</button>
 		</nav>
 		<div class="container">

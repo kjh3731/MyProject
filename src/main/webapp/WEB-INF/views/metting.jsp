@@ -30,7 +30,20 @@
 		<a>문의</a>
 		<a href="/story">스토리</a>
 		<a href="/metting">모임</a>
+		<%-- ${sessionScope.sId} 간단하게 가져오기--%>
+<%
+	String sId = (String)session.getAttribute("sId");
+	if(sId == null) {
+%>
 		<a href="/login" class="float-r">로그인</a>
+<%
+	} else {
+%>
+		<a href="/logout" class="float-r">로그아웃</a>		
+		<p class="float-r"><%=sId %>님 환영합니다</p>
+<%	
+	}
+%>
 	</nav>
 	<header>
 		<div class="bgImg">

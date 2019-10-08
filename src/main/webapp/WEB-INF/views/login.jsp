@@ -12,7 +12,9 @@
 			background-position: center;
  			background-repeat: no-repeat;
    			background-size: cover;
-   			background-image: url(/resources/img/tire.jpg);
+   			/* background-image: url(/resources/img/tire.jpg); */
+   			background: linear-gradient(to top, #3d7eaa, #ffe47a);
+   			/* background: linear-gradient(to top, #003973, #e5e5be); */
    			min-height: 100%;
    		 }
 		
@@ -43,21 +45,36 @@
 		.inputWrap {margin: 5px 0;}
 		label {display: block; margin: 5px 0;}
 		.loginFind {padding-top: 10px;}
+		
+		span {font-size: 0.9em; color: red;}
 	</style>
 	<script>
 		$(document).ready(function(){
-			check();
+			
 		});
 		
-		function check(id, pw){
-			var loginData = {"id" : id, "pw" : pw};
+		function check(){
+			var sId = $("#sId").val();
+			var sPw = $("#sPw").val();
+			var loginData = {"sId" : sId, "sPw" : sPw};
 			$.ajax({
 				url:"/localLogin/check",
 				data: loginData
 			})
 			.done(function(data){
-				data = JSON.parse(data);
 				console.log(data);
+				data = JSON.parse(data);
+				var html = "";
+				if(data.result == 0) {
+					html += '<span>';
+					html += '아이디 또는 비밀번호가 틀립니다.';
+					html += '</span>';
+					
+					$("#loginText").empty();
+					$("#loginText").append(html);
+				} else {
+					location.href="/localLogin";
+				}
 			})
 		}
 	</script>
@@ -73,18 +90,19 @@
 				<h3>자전거 함께 타고 싶을 땐</h3>
 				<h3>타요</h3>
 			</div>
-			<form action="/localLogin" method="post">
+			<form method="post" onsubmit="return false;">
 				<div class="inputWrap">
 					<label>아이디 또는 이메일</label>
-					<input type="text" name="sId">
+					<input type="text" name="sId" id="sId">
 				</div>
 				<div class="inputWrap">
 					<label>비밀번호</label>
-					<input type="password" name="sPw">
+					<input type="password" name="sPw" id="sPw">
 				</div>
 				<div class="login">
-					<input type="submit" value="로그인">
+					<input type="submit" value="로그인" onclick="check()">
 				</div>
+			  	<div id="loginText"></div>
 				<div class="border-t">
 					<a href="/login/kakao">
 						<img src="/resources/img/kakao_btn.png">
