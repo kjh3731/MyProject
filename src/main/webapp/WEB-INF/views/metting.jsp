@@ -7,21 +7,48 @@
 	<meta charset="UTF-8">
 	<title>모임 글</title>
 	<link rel="stylesheet" href="/resources/css/home.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<style>
 		.bgImg {
-		background-image: url("/resources/img/bike.jpg"); height: 150px;
-		background-position: center;
-		/* background-attachment: fixed; */
-    	background-repeat: no-repeat;
-    	background-size: cover;
-    	margin-top: 51px;
+			background-image: url("/resources/img/bike.jpg"); height: 150px;
+			background-position: center;
+			/* background-attachment: fixed; */
+	    	background-repeat: no-repeat;
+	    	background-size: cover;
+	    	margin-top: 51px;
 		}
 		
 		input {padding: 9.5px 5px;}
 		
 		.headText {width: 100%;}
 		.search {display: inline-block;}
+		
+		.pagination {display: inline-block;}
+		
+		.pagination a {
+		 	color: black;
+		 	float: left;
+			padding: 8px 16px;
+			text-decoration: none;
+		}
+		
+		.pagination a.active {
+			background-color: #4CAF50;
+			color: white;
+		}
+		
+		.pagination a:hover:not(.active) {background-color: #ddd;}
 	</style>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var sessionId = <%=session.getAttribute("sId")%>;
+		$("#write").on("click", function(){
+			if(sessionId == null || sessionId ==""){
+				alert("로그인을 하면 글쓰기가 가능합니다.");
+			}
+		});
+	});
+	</script>
 </head>
 <body>
 	<nav>
@@ -35,7 +62,10 @@
 	String sId = (String)session.getAttribute("sId");
 	if(sId == null) {
 %>
-		<a href="/login" class="float-r">로그인</a>
+		<div class="float-r">
+			<a href="/login">로그인</a>
+			<a href="/signUp">회원가입</a>
+		</div>	
 <%
 	} else {
 %>
@@ -66,7 +96,7 @@
 				</form>
 			</div>	
 			<div class="float-r">
-				<a href="/metting/write"><button>글쓰기</button></a>
+				<a href="/metting/write"><button id="write">글쓰기</button></a>
 			</div>
 		</div>
 		<table>
@@ -88,8 +118,8 @@
 %>			
 				<tr>
 					<td><%=list.get(i).getmNo() %></td>
-					<td><%=list.get(i).getmTitle() %></td>
-					<td><%=list.get(i).getmUser() %></td>
+					<td><a href="/metting/read/<%=list.get(i).getmNo() %>"><%=list.get(i).getmTitle() %></a></td>
+					<td><%=list.get(i).getmId() %></td>
 					<td><%=list.get(i).getmDate() %></td>
 				</tr>
 <%
@@ -98,6 +128,16 @@
 %>				
 			</tbody>
 		</table>
+		<div class="pagination">
+			<a href="#">&laquo;</a>
+			<a href="#">1</a>
+			<a class="active" href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">6</a>
+			<a href="#">&raquo;</a>
+		</div>
 	</div>
 </body>
 </html>

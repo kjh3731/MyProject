@@ -7,13 +7,13 @@
     	select 1 as cnt
   	</select>
   	<select id="select" resultType="kr.gudi.web.bean.HomeBean">
-  		select `mNo`,`mTitle`,`mUser`, DATE_FORMAT(`mDate`,'%Y.%m.%d') AS `mDate` 
+  		select `mNo`,`mTitle`,`mId`, DATE_FORMAT(`mDate`,'%Y.%m.%d') AS `mDate` 
   		from mWrite 
   		where `mDelyn` = 'N'
   	</select>
   	
   	<select id="date-select" parameterType="hashmap" resultType="kr.gudi.web.bean.HomeBean">
-		SELECT `mNo`,`mTitle`,`mUser`, DATE_FORMAT(`mDate`,'%Y.%m.%d') AS `mDate`
+		SELECT `mNo`,`mTitle`,`mId`, DATE_FORMAT(`mDate`,'%Y.%m.%d') AS `mDate`
 		from mWrite 
 		where `mDelyn` = 'N' AND DATE(mDate) = '${year}-${month}-${day}'
   	</select>

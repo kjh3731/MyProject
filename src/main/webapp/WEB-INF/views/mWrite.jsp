@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>글쓰기</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="/resources/libs/ckeditor/ckeditor.js"></script>
 	<script>
 		$(document).ready(function(){
@@ -17,7 +17,7 @@
 
 	              switch (dialogName) {
 	                  case 'image': //Image Properties dialog
-	                  //dialogDefinition.removeContents('info');
+	                  dialogDefinition.removeContents('info');
 	                  dialogDefinition.removeContents('Link');
 	                  dialogDefinition.removeContents('advanced');
 	                  break;
@@ -25,11 +25,13 @@
 	          });
 			
 	         CKEDITOR.replace( 'editor', {
-	             resize_enabled: false,
-	             height: 500,
-	             uiColor: '#FFFFFF'
+	             resize_enabled: false
+	             ,height: 500
+	             ,uiColor: '#FFFFFF'
+	             ,filebrowserImageUploadUrl: '/resources/upload'
 	          });
 			}
+			
 	</script>
 	<style>
 		html, body, h3 {margin: 0; padding: 0;}
@@ -51,8 +53,9 @@
 			<button type="submit" class="float-r">저장</button>
 		</nav>
 		<div class="container">
+		${sessionScope.sId} 세션체크
 			<div class="padding">
-				<input type="text" name="mTitle" placeholder="제목">
+				<input type="text" name="mTitle" placeholder="제목" required="required">
 			</div>		
 			<textarea id="editor" name="mContents"></textarea>
 			<!-- <div class="padding">

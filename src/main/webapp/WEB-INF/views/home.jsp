@@ -51,8 +51,8 @@
 					for(var i = 0; i < data.result.length; i++) {
 						html += '<tr>';
 						html += '<td>' + data.result[i].mNo + '</td>'
-						html += '<td><a>' + data.result[i].mTitle + '</a></td>';
-						html += '<td>' + data.result[i].mUser + '</td>';
+						html += '<td><a href="/metting/read/' + data.result[i].mNo + '">' + data.result[i].mTitle + '</a></td>';
+						html += '<td>' + data.result[i].mId + '</td>';
 						html += '<td>' + data.result[i].mDate + '</td>';
 						html += '</tr>';
 					}
@@ -81,7 +81,10 @@
 	String sId = (String)session.getAttribute("sId");
 	if(sId == null) {
 %>
-		<a href="/login" class="float-r">로그인</a>
+	<div class="float-r">
+		<a href="/login">로그인</a>
+		<a href="/signUp">회원가입</a>
+	</div>	
 <%
 	} else {
 %>

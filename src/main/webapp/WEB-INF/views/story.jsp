@@ -32,7 +32,10 @@
 	String sId = (String)session.getAttribute("sId");
 	if(sId == null) {
 %>
-		<a href="/login" class="float-r">로그인</a>
+		<div class="float-r">
+			<a href="/login">로그인</a>
+			<a href="/signUp">회원가입</a>
+		</div>	
 <%
 	} else {
 %>

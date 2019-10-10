@@ -40,7 +40,6 @@ public class LoginController {
 //			System.out.println(result.get("count"));
 			
 			int count = sql.selectOne("signUp.login", paraMap);
-			System.out.println(count);
 			
 			HashMap<String, Object> result = new HashMap<String, Object>();
 			if (sId ==  null || sPw == null || count == 0) {

@@ -5,7 +5,7 @@ public class HomeBean {
 	private String mTitle;
 	private String mContents;
 	private String mImgUrl;
-	private String mUser;
+	private String mId;
 	private String mDate;
 	
 	public String getmNo() {
@@ -32,11 +32,11 @@ public class HomeBean {
 	public void setmImgUrl(String mImgUrl) {
 		this.mImgUrl = mImgUrl;
 	}
-	public String getmUser() {
-		return mUser;
+	public String getmId() {
+		return mId;
 	}
-	public void setmUser(String mUser) {
-		this.mUser = mUser;
+	public void setmId(String mId) {
+		this.mId = mId;
 	}
 	public String getmDate() {
 		return mDate;
@@ -48,6 +48,6 @@ public class HomeBean {
 	@Override
 	public String toString() {
 		return "HomeBean [mNo=" + mNo + ", mTitle=" + mTitle + ", mContents=" + mContents + ", mImgUrl=" + mImgUrl
-				+ ", mUser=" + mUser + ", mDate=" + mDate + "]";
+				+ ", mId=" + mId + ", mDate=" + mDate + "]";
 	}
 }
