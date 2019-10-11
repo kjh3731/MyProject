@@ -56,6 +56,7 @@ nav a {padding: 16px 10px;}
 .headText {margin: 20px 0;}
 .headText button {padding: 10px 20px; background-color: #70e1f5; border: none;}
 
+.metting td:nth-child(n+3) {text-align: center; width: 20%}
 .mTable {height: 40px;}
 
 .float-r {float: right;}

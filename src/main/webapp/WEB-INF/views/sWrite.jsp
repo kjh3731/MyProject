@@ -52,9 +52,9 @@
 		</nav>
 		<div class="container">
 			<div class="padding">
-				<input type="text" name="mTitle" placeholder="제목">
+				<input type="text" name="sTitle" placeholder="제목">
 			</div>		
-			<textarea id="editor" name="mContents"></textarea>
+			<textarea id="editor" name="sContents"></textarea>
 			<!-- <div class="padding">
 				<input type="file">
 			</div> -->

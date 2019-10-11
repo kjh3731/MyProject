@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.http.HttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,15 +29,8 @@ public class MettingController {
 	
 	@RequestMapping("/metting")
 	public String metting(Model model, HomeBean hb) {
-		model.addAttribute("list", sql.selectList("metting.select", hb));
-		
+		model.addAttribute("list", sql.selectList("write.mettingSelect", hb));
 		return "metting";
-	}
-	
-	@RequestMapping("/metting/search")
-	public String search() {
-		
-	 	return "redirect:/metting";
 	}
 	
 	@RequestMapping("/metting/write")
@@ -54,12 +46,13 @@ public class MettingController {
 	}
 	
 	@PostMapping("/metting/write/{key}")
-	public String crud(@PathVariable("key") String key, HomeBean hb, HttpSession session) {
+	public String mCRUD(@PathVariable("key") String key, HomeBean hb, HttpSession session) {
+		System.out.println(hb.toString());
+		String mId = session.getAttribute("sId").toString();
 		switch (key) {
 		case "insert":
-			String mId = session.getAttribute("sId").toString();
 			hb.setmId(mId);
-			sql.insert("metting.insert", hb);
+			sql.insert("write.mettingInsert", hb);
 			break;
 
 		default:
@@ -73,10 +66,10 @@ public class MettingController {
 	public String view(@PathVariable("key") String key, HomeBean hb, Model model) {
 		hb.setmNo(key);
 		model.addAttribute("read", sql.selectOne("read.select", hb));
-		return "readMore";
+		return "mRead";
 	}
 	
-	@PostMapping("/resources/upload")
+	@PostMapping("/metting/upload")
 	public String file(MultipartFile file, HttpServletRequest req, HttpServletResponse res) {
 		System.out.println(file.getOriginalFilename());
 		try {
@@ -111,6 +104,6 @@ public class MettingController {
 			e.printStackTrace();
 		}
 		
-		return "";
+		return "mWrite";
 	}
 }

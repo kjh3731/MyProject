@@ -130,6 +130,7 @@ public class KakaoLoginController {
 //						sql.insert("user.insert", resultMap);
 //					}
 				}
+				br.close();
 				input.close();
 			}
 			res.sendRedirect("/");

@@ -60,12 +60,6 @@
 				}
 			});
 		}
-		
-		function login() {
-			$("nav>a:last").remove();
-			
-			$("nav>a:last").append();
-		}
 	</script>
 </head>
 <body>

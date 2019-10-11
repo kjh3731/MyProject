@@ -16,4 +16,7 @@
   	<insert id="insert" parameterType="kr.gudi.web.bean.SignUpBean">
   		insert into signUp (sId, sPw, sName, sGender, sPhon) values (#{sId}, #{sPw}, #{sName}, #{sGender}, #{sPhon})
   	</insert>
+  	<update id="updatePw" parameterType="kr.gudi.web.bean.SignUpBean">
+  		update signUp set sPw = #{sPw} where sId = #{sId}
+  	</update>
 </mapper>

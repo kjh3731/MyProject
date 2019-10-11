@@ -46,20 +46,4 @@ public class HomeController {
 		}
 	}
 
-	@RequestMapping("/test")
-	public void test(HttpServletResponse res) {
-		try {
-			int a = 1;
-			if(a == 1) {
-				
-				res.getWriter().write("test");
-			} else {
-				res.getWriter().write("tes124t");
-				
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
 }

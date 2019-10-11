@@ -50,4 +50,25 @@ public class SignUpController {
 //			System.out.println(sb.toString());
 			return "redirect:/";
 		}
+		
+		@RequestMapping("/findPw")
+		public String findPw() {
+			
+			return "findPw";
+		}
+		
+		@RequestMapping("/findPw/email")
+		public void findEmail(HttpServletRequest req, HttpServletResponse res) {
+			String sId = req.getParameter("sId");
+			try {
+				HashMap<String, Object> result = new HashMap<String, Object>();
+				result.put("result", sql.update("signUp.updatePw", sId));
+				
+				System.out.println(sql.update("signUp.updatePw", sId));
+				res.getWriter().write(JSONObject.fromObject(result).toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 }

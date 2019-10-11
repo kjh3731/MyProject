@@ -111,7 +111,7 @@
 				</div>
 			</form>
 			<div class="loginFind">
-				<span><a>비밀번호가 생각나지 않나요?</a></span>
+				<span><a href="/findPw">비밀번호가 생각나지 않나요?</a></span>
 				<span><a href="/signUp">아이디가 없다면 여기에서 가입하세요</a></span>
 			</div>
 			</div>

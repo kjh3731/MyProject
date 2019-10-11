@@ -1,3 +1,5 @@
+<%@page import="kr.gudi.web.bean.StoryBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,17 +9,20 @@
 	<link rel="stylesheet" href="/resources/css/home.css">
 	<style>
 		.bgImg {
-		background-image: url("/resources/img/bike.jpg"); height: 150px;
+		background-image: url("/resources/img/bike.jpg"); height: 200px;
 		background-position: center;
 		/* background-attachment: fixed; */
     	background-repeat: no-repeat;
     	background-size: cover;
-    	margin-top: 51px;
+    	margin-top: 53px;
 		}
 		input {padding: 9.5px 5px;}
 		
 		.headText{width: 100%;}
 		.search {display: inline-block;}
+		
+		td {padding: 10px 0;}
+		td:nth-child(n+3) {text-align: center; width: 20%;}
 	</style>
 </head>
 <body>
@@ -63,12 +68,18 @@
 		<div class="headText">
 			<div class="search">
 				<form>
-					<input type="text" placeholder="검색" formaction="/metting/search">
+					<input type="text" placeholder="검색" formaction="/story">
 				</form>
 			</div>
+<%
+	if(sId != null) {
+%>			
 			<div>	
 				<a href="/story/write"><button class="float-r">글쓰기</button></a>
 			</div>
+<%
+	}
+%>			
 		</div>
 		<table>
 			<thead>
@@ -81,16 +92,26 @@
 			</thead>
 			<tbody>
 <%
-	
+	List<StoryBean> list = (List<StoryBean>)request.getAttribute("list");
+	if(list == null) {
+		System.out.println("Story list가 없습니다");
+%>
+				<tr>
+					<td colspan="4">올라온 스토리 여행이 없어요</td>
+				</tr>
+<%		
+	} else {
+		for(int i = 0; i < list.size(); i++) {
 %>			
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td><%=list.get(i).getsNo() %></td>
+					<td><a href="/story/read/<%=list.get(i).getsNo()%>"><%=list.get(i).getsTitle() %></a></td>
+					<td><%=list.get(i).getsId() %></td>
+					<td><%=list.get(i).getsDate() %></td>
 				</tr>
 <%
-	
+		}
+	}
 %>				
 			</tbody>
 		</table>

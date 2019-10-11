@@ -7,9 +7,13 @@
   		select `mNo`,`mTitle`, `mContents`, `mImgUrl`, `mId`, DATE_FORMAT(`mDate`,'%Y.%m.%d') AS `mDate` 
   		from mWrite 
   		where `mDelyn` = 'N' and `mNo` = ${mNo}
-  		
   	</select>
   	<insert id="insert" parameterType="kr.gudi.web.bean.HomeBean">
   		insert into mWrite (`mTitle`, `mContents`, `mId`) values (#{mTitle}, #{mContents}, #{mId})
   	</insert>
+  	<select id="storySelect" parameterType="kr.gudi.web.bean.StoryBean" resultType="kr.gudi.web.bean.StoryBean">
+  		select `sNo`,`sTitle`, `sContents`, `sImgUrl`, `sId`, DATE_FORMAT(`sDate`,'%Y.%m.%d') AS `sDate` 
+  		from sWrite 
+  		where `sDelyn` = 'N' and `sNo` = ${sNo}
+  	</select>
 </mapper>

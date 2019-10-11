@@ -28,7 +28,7 @@
 	             resize_enabled: false
 	             ,height: 500
 	             ,uiColor: '#FFFFFF'
-	             ,filebrowserImageUploadUrl: '/resources/upload'
+	             ,filebrowserImageUploadUrl: '/metting/upload'
 	          });
 			}
 			
@@ -53,7 +53,6 @@
 			<button type="submit" class="float-r">저장</button>
 		</nav>
 		<div class="container">
-		${sessionScope.sId} 세션체크
 			<div class="padding">
 				<input type="text" name="mTitle" placeholder="제목" required="required">
 			</div>		
